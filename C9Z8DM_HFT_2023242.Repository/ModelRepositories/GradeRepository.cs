@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace C9Z8DM_HFT_2023242.Repository
 {
-    internal class GradeRepository : Repository<Grade>, IRepository<Grade>
+    public class GradeRepository : Repository<Grade>, IRepository<Grade>
     {
         public GradeRepository(SchoolDbContext ctx) : base(ctx)
         {

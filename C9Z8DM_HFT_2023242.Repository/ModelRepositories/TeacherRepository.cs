@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace C9Z8DM_HFT_2023242.Repository
 {
-    internal class TeacherRepository : Repository<Teacher>, IRepository<Teacher>
+    public class TeacherRepository : Repository<Teacher>, IRepository<Teacher>
     {
         public TeacherRepository(SchoolDbContext ctx) : base(ctx)
         {
