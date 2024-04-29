@@ -1,3 +1,6 @@
+using C9Z8DM_HFT_2023242.Logic;
+using C9Z8DM_HFT_2023242.Models;
+using C9Z8DM_HFT_2023242.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +28,16 @@ namespace C9Z8DM_HFT_2023242.Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<SchoolDbContext>();
+            services.AddTransient<IRepository<Grade>, GradeRepository>();
+            services.AddTransient<IRepository<Student>, StudentRepository>();
+            services.AddTransient<IRepository<Teacher>, TeacherRepository>();
+
+            services.AddTransient<IGradeLogic, GradeLogic>();
+            services.AddTransient<IStudentLogic, StudentLogic>();
+            services.AddTransient<ITeacherLogic, TeacherLogic>();
+
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
