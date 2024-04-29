@@ -2,7 +2,9 @@ using C9Z8DM_HFT_2023242.Logic;
 using C9Z8DM_HFT_2023242.Models;
 using C9Z8DM_HFT_2023242.Repository;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,6 +58,14 @@ namespace C9Z8DM_HFT_2023242.Endpoint
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "C9Z8DM_HFT_2023242.Endpoint v1"));
             }
 
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                    .Get<IExceptionHandlerFeature>()
+                    .Error;
+                var response = new { Msg = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
             app.UseRouting();
 
             app.UseAuthorization();
