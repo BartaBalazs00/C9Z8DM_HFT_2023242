@@ -34,7 +34,7 @@ namespace C9Z8DM_HFT_2023242.Endpoint.Controllers
             this.logic.Create(value);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Update([FromBody] Teacher value)
         {
             this.logic.Update(value);
