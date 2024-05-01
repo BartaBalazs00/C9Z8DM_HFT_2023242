@@ -54,5 +54,39 @@ namespace C9Z8DM_HFT_2023242.Logic
         {
             this.repo.Update(item);
         }
+
+        //Non CRUD
+
+        public IEnumerable<ClassInfo> GetStudentsCountOfEachClass()
+        {
+            return from x in this.repo.ReadAll()
+                   group x by x.StudentClass into g
+                   select new ClassInfo()
+                   {
+                       StudentClass = g.Key,
+                       Count = g.Count()
+                   };
+        }
+    }
+    public class ClassInfo
+    {
+        public string StudentClass { get; set; }
+        public int Count { get; set; }
+        public override bool Equals(object obj)
+        {
+            ClassInfo classInfo = obj as ClassInfo;
+            if (classInfo == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.StudentClass == classInfo.StudentClass && this.Count == classInfo.Count;
+            }
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.StudentClass, this.Count);
+        }
     }
 }
