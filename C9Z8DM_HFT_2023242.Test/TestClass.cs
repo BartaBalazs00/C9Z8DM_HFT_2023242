@@ -110,7 +110,7 @@ namespace C9Z8DM_HFT_2023242.Test
         [Test]
         public void NumbersOfStudentsThatHasFailedTest()
         {
-            int count = gradeLogic.GetNumbersOfStudentsThatHasFailed();
+            int? count = gradeLogic.GetNumbersOfStudentsThatHasFailed();
             Assert.AreEqual(0, count);
         }
         [Test]
