@@ -94,7 +94,7 @@ namespace C9Z8DM_HFT_2023242.Logic
                        AvgGradeValue = g.Average(x => x.GradeValue)
                    };
         }
-        public int GetNumbersOfStudentsThatHasFailed()
+        public int? GetNumbersOfStudentsThatHasFailed()
         {
             return this.repo
                 .ReadAll()
