@@ -77,10 +77,10 @@ namespace C9Z8DM_HFT_2023242.Logic
         public IEnumerable<GradeInfo> GetAvarageGradesPerStudents() 
         {
             return from x in this.repo.ReadAll()
-                   group x by x.StudentId into g
+                   group x by x.Student.StudentName into g
                    select new GradeInfo()
                    {
-                       Id = g.Key,
+                       Name = g.Key,
                        AvgGradeValue = g.Average(x => x.GradeValue)
                    };
         }
@@ -126,7 +126,7 @@ namespace C9Z8DM_HFT_2023242.Logic
     }
     public class GradeInfo
     {
-        public int Id { get; set; }
+        public string Name { get; set; }
         public double? AvgGradeValue { get; set; }
         public override bool Equals(object obj)
         {
@@ -137,14 +137,14 @@ namespace C9Z8DM_HFT_2023242.Logic
             }
             else
             {
-                return this.Id == gradeInfo.Id
+                return this.Name == gradeInfo.Name
                     && this.AvgGradeValue == gradeInfo.AvgGradeValue;
             }
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.Id, this.AvgGradeValue);
+            return HashCode.Combine(this.Name, this.AvgGradeValue);
         }
     }
 }
