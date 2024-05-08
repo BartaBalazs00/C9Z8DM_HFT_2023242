@@ -21,13 +21,17 @@ namespace C9Z8DM_HFT_2023242.Models
         public string StudentClass { get; set; }
         [JsonIgnore]
         public virtual ICollection<Grade> Grades { get; set; }
-        public Student() { }
+        public Student()
+        {
+            Grades = new HashSet<Grade>();
+        }
         public Student(string line)
         {
             string[] split = line.Split('#');
             StudentId = int.Parse(split[0]);
             StudentName = split[1];
             StudentClass = split[2];
+            Grades = new HashSet<Grade>();
         }
     }
 }

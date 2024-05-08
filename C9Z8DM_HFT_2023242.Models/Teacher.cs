@@ -29,7 +29,10 @@ namespace C9Z8DM_HFT_2023242.Models
 
         [JsonIgnore]
         public virtual ICollection<Grade> Grades { get; set; }
-        public Teacher() { }
+        public Teacher() 
+        {
+            Grades = new List<Grade>();
+        }
         public Teacher(string line)
         {
             string[] split = line.Split('#');
@@ -37,6 +40,7 @@ namespace C9Z8DM_HFT_2023242.Models
             TeacherName = split[1];
             Subject = split[2];
             Email = split[3];
+            Grades = new HashSet<Grade>();
         }
     }
 }
