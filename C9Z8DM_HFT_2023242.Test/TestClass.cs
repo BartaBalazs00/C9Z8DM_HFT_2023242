@@ -16,9 +16,12 @@ namespace C9Z8DM_HFT_2023242.Test
         StudentLogic studentLogic;
         Mock<IRepository<Grade>> mockGradeRepository;
         Mock<IRepository<Student>> mockStudentRepository;
+        SchoolDbContext ctx;
         [SetUp]
         public void Init()
         {
+            
+            ctx = new SchoolDbContext();
             var inputDataGrade = new List<Grade>()
             {
                 new Grade { GradeId = 1, StudentId = 1, TeacherId = 1, Subject = "Math", GradeValue = 4, Year = 2020 },
@@ -35,6 +38,8 @@ namespace C9Z8DM_HFT_2023242.Test
                 new Student { StudentId = 3, StudentName = "Michael Johnson", StudentClass = "10B" },
                 new Student { StudentId = 4, StudentName = "Emily Brown", StudentClass = "10B" }
             }.AsQueryable();
+            ctx.AddRange(inputDataStudent);
+            ctx.AddRange(inputDataGrade);
             mockGradeRepository = new Mock<IRepository<Grade>>();
             mockGradeRepository.Setup(m => m.ReadAll()).Returns(inputDataGrade);
             mockStudentRepository = new Mock<IRepository<Student>>();
@@ -57,17 +62,17 @@ namespace C9Z8DM_HFT_2023242.Test
         [Test]
         public void AvgGradesPerStudentsTest()
         {
-            var result = gradeLogic.GetAvarageGradesPerStudents();
+            var result = gradeLogic.GetAvarageGradesPerStudents().ToList();
             var expected = new List<GradeInfo>()
             {
                 new GradeInfo()
                 {
-                    Id = 1,
+                    Name = "John Doe",
                     AvgGradeValue = 3.6
                 },
                 new GradeInfo()
                 {
-                    Id = 2,
+                    Name = "Jane Smith",
                     AvgGradeValue = 5
                 }
             };
