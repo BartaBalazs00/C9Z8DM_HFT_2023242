@@ -1,4 +1,5 @@
 ﻿using C9Z8DM_HFT_2023242.Logic;
+using C9Z8DM_HFT_2023242.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
