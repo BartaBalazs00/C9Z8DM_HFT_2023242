@@ -14,9 +14,9 @@ namespace C9Z8DM_HFT_2023242.Client
         {
             if (entity == "Grade")
             {
-                Console.Write("Enter studentId: ");
                 try
                 {
+                    Console.Write("Enter studentId: ");
                     int studentId = int.Parse(Console.ReadLine());
                     Console.Write("Enter teacherId: ");
                     int teacherId = int.Parse(Console.ReadLine());
@@ -45,9 +45,9 @@ namespace C9Z8DM_HFT_2023242.Client
             }
             else if(entity == "Student")
             {
-                Console.Write("Enter student's name: ");
                 try
                 {
+                    Console.Write("Enter student's name: ");
                     string name = Console.ReadLine();
                     Console.Write("Enter student's class: ");
                     string studentClass = Console.ReadLine();
@@ -67,9 +67,9 @@ namespace C9Z8DM_HFT_2023242.Client
             }
             else if (entity == "Teacher")
             {
-                Console.Write("Enter teacher's name: ");
                 try
                 {
+                    Console.Write("Enter teacher's name: ");
                     string name = Console.ReadLine();
                     Console.Write("Enter teacher's subject: ");
                     string subject = Console.ReadLine();
@@ -136,9 +136,9 @@ namespace C9Z8DM_HFT_2023242.Client
         {
             if (entity == "Grade")
             {
-                Console.Write("Enter Grade's id to update: ");
                 try
                 {
+                    Console.Write("Enter Grade's id to update: ");
                     int id = int.Parse(Console.ReadLine());
                     Grade grade = rest.Get<Grade>(id, "grade");
                     Console.Write($"New grade [old:{grade.GradeValue}]: ");
@@ -156,9 +156,9 @@ namespace C9Z8DM_HFT_2023242.Client
             }
             else if(entity == "Student")
             {
-                Console.Write("Enter Student's id to update: ");
                 try
                 {
+                    Console.Write("Enter Student's id to update: ");
                     int id = int.Parse(Console.ReadLine());
                     Student student = rest.Get<Student>(id, "student");
                     Console.Write($"New student name [old: {student.StudentName}]: ");
@@ -178,9 +178,9 @@ namespace C9Z8DM_HFT_2023242.Client
             }
             else if (entity == "Teacher")
             {
-                Console.Write("Enter Teacher's id to update: ");
                 try
                 {
+                    Console.Write("Enter Teacher's id to update: ");
                     int id = int.Parse(Console.ReadLine());
                     Teacher teacher = rest.Get<Teacher>(id, "teacher");
                     Console.Write($"New teacher name [old: {teacher.TeacherName}]: ");
@@ -206,9 +206,9 @@ namespace C9Z8DM_HFT_2023242.Client
         {
             if (entity == "Grade")
             {
-                Console.Write("Enter Grade's id to delete: ");
                 try
                 {
+                    Console.Write("Enter Grade's id to delete: ");
                     int id = int.Parse(Console.ReadLine());
                     rest.Delete(id, "grade");
                 }
@@ -221,9 +221,9 @@ namespace C9Z8DM_HFT_2023242.Client
             }
             else if (entity == "Student")
             {
-                Console.Write("Enter Student's id to delete: ");
                 try
                 {
+                    Console.Write("Enter Student's id to delete: ");
                     int id = int.Parse(Console.ReadLine());
                     rest.Delete(id, "student");
                 }
@@ -236,9 +236,9 @@ namespace C9Z8DM_HFT_2023242.Client
             }
             else if(entity == "Teacher")
             {
-                Console.Write("Enter Teacher's id to delete: ");
                 try
                 {
+                    Console.Write("Enter Teacher's id to delete: ");
                     int id = int.Parse(Console.ReadLine());
                     rest.Delete(id, "teacher");
                 }
@@ -290,10 +290,11 @@ namespace C9Z8DM_HFT_2023242.Client
         {
             try
             {
-                var result = rest.Get<dynamic>("Stat/AvarageGradesPerStudents");
+                var result = rest.Get<GradeInfo>("Stat/AvarageGradesPerStudents");
                 foreach (var item in result)
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine("Name: "+item.Name+
+                        " - AvarageGradeValue: "+item.AvgGradeValue);
                 }
                 Console.ReadKey();
             }
@@ -308,10 +309,11 @@ namespace C9Z8DM_HFT_2023242.Client
         {
             try
             {
-                var result = rest.Get<dynamic>("Stat/AvarageGradesPerSubjects");
+                var result = rest.Get<GradeInfoPerSubject>("Stat/AvarageGradesPerSubjects");
                 foreach (var item in result)
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine("Subject: "+item.Subject + 
+                        " - AvarageGradeValue: "+item.AvgGradeValue);
                 }
                 Console.ReadKey();
             }
