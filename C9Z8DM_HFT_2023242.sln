@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{574499
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C9Z8DM_HFT_2023242.Endpoint", "C9Z8DM_HFT_2023242.Endpoint\C9Z8DM_HFT_2023242.Endpoint.csproj", "{2910F914-32D3-458E-8730-303B64A6495A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C9Z8DM_HFT_2023242.WpfClient", "C9Z8DM_HFT_2023242.WpfClient\C9Z8DM_HFT_2023242.WpfClient.csproj", "{7F777F71-A104-4E67-BF35-D96F87B7236B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{2910F914-32D3-458E-8730-303B64A6495A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2910F914-32D3-458E-8730-303B64A6495A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2910F914-32D3-458E-8730-303B64A6495A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F777F71-A104-4E67-BF35-D96F87B7236B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F777F71-A104-4E67-BF35-D96F87B7236B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F777F71-A104-4E67-BF35-D96F87B7236B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F777F71-A104-4E67-BF35-D96F87B7236B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
